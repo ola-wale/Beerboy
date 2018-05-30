@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap-grid';
+@import '~bootstrap/scss/mixins/border-radius';
+@import '~bootstrap/scss/mixins/hover';
+@import '~bootstrap/scss/card';
+$font-family-base: Avenir Next, Poppins, Arial;
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '~bootstrap/scss/bootstrap-reboot';
+$bg__color: #f7f9fc;
+
+body,
+html {
+  background-color: $bg__color;
+}
+
+html.cdk-global-scrollblock {
+  overflow: hidden;
+}
+
+mat-dialog-container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+img {
+  max-width: 100%;
+}
+
+.card {
+  background-color: transparent;
+  border: none;
+}
+
+.load-spinner-parent {
+  &.loaded {
+    background-color: #8500ff;
+    color: white;
+    border-radius: 3px;
+    padding: 5px 10px;
+  }
+
+  &.fetched-all {
+    background-color: #4CAF50;
+  }
+
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: white !important;
+  }
+  display: inline-block;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 100%;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+  z-index: 5;
+  transition: all 0.2s ease-out;
+}

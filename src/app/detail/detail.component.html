@@ -1,0 +1,53 @@
+<mat-dialog-content>
+  <div class="root">
+    <div class="spinner">
+      <div *ngIf="!loaded" class="loaded load-spinner-parent">
+        <mat-spinner [strokeWidth]="3" [diameter]="40"></mat-spinner>
+        <!-- 234: max here - https://api.punkapi.com/v2/beers?page=3&per_page=80;
+            resource APIs should return the total length of data being fetched
+            with a 'next-url' param but ¯\_(ツ)_/¯
+        -->
+      </div>
+    </div>
+
+    <div *ngIf="loaded" class="row featured-beer">
+      <div class="col-12 col-sm-3">
+        <img [attr.src]="beer?.image_url" [attr.alt]="beer?.name" />
+      </div>
+      <div class="col-12 col-sm-9">
+        <h1>{{beer?.name}}</h1>
+        <small>{{beer?.tagline}}</small>
+        <ul class="stats">
+          <li>
+            <b>IBU:</b>{{beer?.ibu}}
+          </li>
+          <li>
+            <b>ABV:</b>{{beer?.abv}}
+          </li>
+          <li>
+            <b>EBC:</b>{{beer?.ebc}}
+          </li>
+        </ul>
+        <p>{{beer?.description}}</p>
+        <b>Best served with:</b>
+        <ul class="best-served">
+          <li *ngFor="let pairing of beer?.food_pairing">
+            {{pairing}}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div *ngIf="beer?.similarBeers" class="similar-beers">
+      <h5 class="title">Similar Beers</h5>
+      <div class="row">
+        <app-beer-card *ngFor="let similarBeer of beer?.similarBeers"
+        (click)="loadBeer(similarBeer?.id)"
+        [beer]="similarBeer"
+        [classes]="['similar-beer']"
+        class="card col-12 col-md-4">
+      </app-beer-card>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

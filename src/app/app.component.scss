@@ -1,0 +1,21 @@
+header {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+app-beer-card {}
+
+app-detail-dialog{
+  display: block;
+  position: relative;
+}
+
+.card-columns {
+  width: 100%;
+}
+
+.load-spinner-parent {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}

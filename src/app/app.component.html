@@ -1,0 +1,17 @@
+<header class="container">
+  <h1>{{title}}</h1>
+</header>
+<div class="container">
+  <div [hidden]="loaded && !beers" [ngClass]="{'fetched-all':fetchedAll}" class="loaded load-spinner-parent">
+    <mat-spinner *ngIf="!loaded" [strokeWidth]="3" [diameter]="40"></mat-spinner>
+    <span *ngIf="loaded" class="load-count">{{beers?.length}} of 234</span>
+    <!-- 234: max here - https://api.punkapi.com/v2/beers?page=3&per_page=80;
+    resource APIs should return the total length of data being fetched with a 'next-url' param but ¯\_(ツ)_/¯  -->
+  </div>
+  <div>
+    <div class="row row-eq-height">
+      <app-beer-card *ngFor="let beer of beers" [beer]="beer" class="card col-12 col-md-4"></app-beer-card>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,9 @@
+<div [ngClass]="classes" class="root">
+  <a [routerLink]="'details/'+beer?.id">
+    <img [attr.src]="beer?.image_url" [attr.alt]="beer?.name" />
+    <div class="details">
+      <h5>{{beer?.name}}</h5>
+      <small>{{beer?.tagline}}</small>
+    </div>
+    </a>
+</div>
